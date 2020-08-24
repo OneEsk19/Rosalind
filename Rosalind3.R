@@ -11,15 +11,21 @@
 ProtMot <- read.table("rosalind_mprt.txt")
 View(ProtMot)
 
+
 ## Loop through the data elements and generate a url for each
-for(i in ID_List) {
+for(i in ProtMot) {
       fastaURLs = paste0('https://www.uniprot.org/uniprot/',i, '.fasta') # WORKS
 }
 View(fastaURLs)
 ##
 
 
+if (!requireNamespace("BiocManager", quietly = TRUE))
+   install.packages("BiocManager")
+
+BiocManager::install("Biostrings")
 library(Biostrings)
+
 
 ## Loop through list of URLs in fastaURLS and read the AA string from the corresponding webpage
 x <- list()

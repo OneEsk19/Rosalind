@@ -1,0 +1,43 @@
+---
+title: "Rosalind4"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction to Protein Databases
+### From Rosalind Armory
+
+#### Given: The UniProt ID of a protein.
+#### Return: A list of biological processes in which the protein is involved (biological processes are found in a subsection of the protein's "Gene Ontology" (GO) section).
+
+
+Process:
+1) Will receive a file with uniProt ID
+2) Need to insert protein ID into the uniprot url
+3) Summon the uniprot webpage
+4) Extract the required information from the specific tag
+5) Print this info
+
+```{r}
+# read in the file
+IDno <- readLines("file.txt")
+
+# insert it into url
+protURL = paste0('https://www.uniprot.org/uniprot/',IDno)
+protURL
+```
+
+The tag was extracted using SelectorGdaget on a representative uniprot page
+
+```{r}
+library(rvest)    
+
+protURL %>%
+      html_node(".biological_process a") %>%
+      html_text()
+```
+
+At time of writing, there was an error at Rosalind.com for this problem in that the problem file would not download

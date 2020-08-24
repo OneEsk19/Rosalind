@@ -1,6 +1,6 @@
 
 ########### Computing GC Content
-setwd("~/R messin")
+
 
 library(seqinr)
 library(LncFinder)

@@ -11,7 +11,6 @@
 ProtMot <- read.table("rosalind_mprt.txt")
 View(ProtMot)
 
-
 ## Loop through the data elements and generate a url for each
 for(i in ProtMot) {
       fastaURLs = paste0('https://www.uniprot.org/uniprot/',i, '.fasta') # WORKS
@@ -20,12 +19,7 @@ View(fastaURLs)
 ##
 
 
-if (!requireNamespace("BiocManager", quietly = TRUE))
-   install.packages("BiocManager")
-
-BiocManager::install("Biostrings")
 library(Biostrings)
-
 
 ## Loop through list of URLs in fastaURLS and read the AA string from the corresponding webpage
 x <- list()
@@ -35,12 +29,20 @@ for (i in fastaURLs) {
       seq = paste(fastafile)
       x[i] <- data.frame(seq)
 }
-## extract each sequence element from the list into a vector
-ProtSeq <- c(x[[1]],x[[2]],x[[3]],x[[4]],x[[5]],x[[6]],x[[7]],x[[8]],x[[9]],x[[10]],
-             x[[11]],x[[12]],x[[13]])
-View(ProtSeq)
 
-## produce a table of unique ID's, thier fasta webpage and extracted sequences
-finaltable <- data.frame(ProtMot$V1, fastaURLs, ProtSeq) 
 
-View(finaltable)
+## extract each sequence element from the list into a dataframe
+testdf <- data.frame(unlist(x))
+## remove rownames and convert to variable
+testdf1 <- cbind(rownames(testdf), data.frame(testdf, row.names=NULL))
+## add protein IDs from which the URLs were generated as a variable and renmae columns
+pro_table <- cbind(ProtMot, testdf1)
+colnames(pro_table) <- c("ID", "URL", "SEQUENCE")
+
+
+View(pro_table)
+
+###### NEXT STAGE IS TO find the n glycosylation motif 
+
+
+

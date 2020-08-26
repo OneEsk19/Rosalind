@@ -1,0 +1,69 @@
+---
+title: "Finding a Protein Motif"
+author: "G.Robertson"
+date: "27/06/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Rosalind problem
+
+Given: At most 15 UniProt Protein Database access IDs.
+
+Return: For each protein possessing the N-glycosylation motif, output its given access ID followed by a list of locations in the protein string where the motif can be found.
+
+Required libraries
+```{r}
+library(Biostrings)
+```
+
+Read in the data
+```{r}
+ProtMot <- read.table("rosalind_mprt.txt")
+```
+
+Loop through the data elements and generate a url for each
+```{r}
+for(i in ProtMot) {
+      fastaURLs = paste0('https://www.uniprot.org/uniprot/',i, '.fasta') # WORKS
+      }
+```
+
+Loop through list of URLs in fastaURLS and read the AA string from the corresponding webpage
+```{r}
+x <- list() # initialise a list
+for (i in fastaURLs) {
+      fastafile <- readAAStringSet(i) 
+      seq_name = names(fastafile) 
+      seq = paste(fastafile)
+      x[i] <- data.frame(seq)
+}
+```
+
+Extract each sequence element from the list into a dataframe; remove rownames and convert to variable; add protein IDs from which the URLs were generated as a variable and rename columns to produce a table of unique ID's, their fasta webpage and extracted sequences
+```{r}
+testdf <- data.frame(unlist(x))
+
+testdf1 <- cbind(rownames(testdf), data.frame(testdf, row.names=NULL))
+
+pro_table <- cbind(ProtMot, testdf1)
+colnames(pro_table) <- c("ID", "URL", "SEQUENCE")
+```
+
+
+----------
+The data is now sourced and in an intuitive format, i.e tabular
+
+Find the locations of N-glycosylation motifs: N{P}[ST]{P}
+where {X} means anything except X
+and [X] means only X
+
+
+(?=(N[^P][ST][^P]))') 
+## library(stringdist) ! possibly
+
+   library(pracma) ### can detect overlaps!
+   strfind(SEQUENCE, Motif, overlap = TRUE) 

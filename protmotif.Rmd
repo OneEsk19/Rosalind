@@ -53,17 +53,49 @@ pro_table <- cbind(ProtMot, testdf1)
 colnames(pro_table) <- c("ID", "URL", "SEQUENCE")
 ```
 
-
-----------
 The data is now sourced and in an intuitive format, i.e tabular
 
-Find the locations of N-glycosylation motifs: N{P}[ST]{P}
-where {X} means anything except X
-and [X] means only X
+Time to find the motif.
+The first method of looping through the datatable sequences did not work, and will detail the work done at the end.
 
+```{r}
+library(stringi) ## better than stringR as it allows regex indexing
+## and therefore can detect overlaps
+```
 
-(?=(N[^P][ST][^P]))') 
-## library(stringdist) ! possibly
+What did work was to find the motif in one sequence at a time using a function:
+```{r}
+glymot <- function(row){
+      cell <- pro_table[row,3]
+      strtend <- stri_locate_all_regex(cell, "(?=N[^P][ST][^P])")
+      SEdf <- as.data.frame(strtend)
+      print(noquote(pro_table[row, 1]))
+      print(SEdf$start)
+   }
+```
 
-   library(pracma) ### can detect overlaps!
-   strfind(SEQUENCE, Motif, overlap = TRUE) 
+To save time, the function calls were written in advance:
+```{r}
+glymot(1)
+glymot(2)
+glymot(3)
+glymot(4)
+glymot(5)
+glymot(6)
+glymot(7)
+glymot(8)
+glymot(9)
+glymot(10)
+glymot(11)
+glymot(12)
+glymot(13)
+glymot(14)
+glymot(15)
+```
+
+What didn't work....
+(It would be great if this loop worked properly)
+   
+   for (i in testdf1) {
+      stend <- str_locate_all(i, pattern = "N[^P][ST][^P]")
+   }

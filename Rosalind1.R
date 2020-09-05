@@ -1,4 +1,10 @@
-install.packages("tidyverse")
+######## ROSALIND SOLUTIONS FOR:
+# 1. Counting DNA Nucleotides
+# 2. Transcribing RNA into DNA
+# 3. Complementing a Strand of DNA
+# 4. Translating RNA into Protein
+# 5. Calculating Protein Mass
+
 
 install.packages("stringr")
 library(stringr)
@@ -64,18 +70,7 @@ as.character(Result) ## This command converts it to a string which CAN be displa
 
 ########## Calculating Protein Mass
 
-      # In a weighted alphabet, every symbol is assigned a positive real number called a weight. A string formed from a 
-      # weighted alphabet is called a weighted string, and its weight is equal to the sum of the weights of its symbols.
-      # The standard weight assigned to each member of the 20-symbol amino acid alphabet is the monoisotopic mass of 
-      # the corresponding amino acid.
-      # 
-      # Given: A protein string P of length at most 1000 aa.
-      # 
-      # Return: The total weight of P. Consult the monoisotopic mass table.
 
-setwd("~/R messin")
-
-## this needs ti be installed for the str_count command in the loop to work
 install.packages("stringr")
 library(stringr) 
 

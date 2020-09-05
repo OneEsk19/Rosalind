@@ -43,7 +43,7 @@ library(Biostrings)
 ros_translating <- readLines("rosalind_prot.txt")
 print(ros_translating)
 ###///////could add an IF script here
-##if U is found in string then run dna translate
+##if U is found in string then run RNA translate
 
 ## If Dna
 dnasample <- DNAString(ros_translating)

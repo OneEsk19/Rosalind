@@ -7,11 +7,15 @@ library(stringr)
       rosalind1 <- readLines("rosalind_dna.txt") ## Base R
       str_count(rosalind1, c("A","C", "G", "T")) ## stringr
 
+############################################################################
+
 ######## ex2. "Transcribing RNA into DNA"
       rosalind2 <- readLines("rosalind_rna.txt") 
       print(rosalind2)
       rosalind2a <- str_replace_all(rosalind2, "T", "U")
       print(rosalind2a)
+
+############################################################################
 
 ######### ex3, "Complementing a Strand of DNA"
       ## reverse and complement an input DNA string
@@ -30,8 +34,9 @@ Y_to_G <- str_replace_all(G_to_C, "Y", "G") ## transcribing original C (Y) to G
 ros3revComp <- stri_reverse(Y_to_G) ## stringi
 print(ros3revComp)
 
+############################################################################
 
-############# "Translating RNA into Protein"
+######### "Translating RNA into Protein"
 
 
 # Installation of Biostrings package
@@ -55,7 +60,7 @@ Result <- translate(RNAsample) ## this saves the translated string as a special 
 ## in its entirety
 as.character(Result) ## This command converts it to a string which CAN be displayed in its entirety
 
-#########################################################################################################################
+############################################################################
 
 ########## Calculating Protein Mass
 

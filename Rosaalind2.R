@@ -1,6 +1,11 @@
+######## ROSALIND SOLUTIONS FOR:
+# 1. Computjing GC content
+# 2. Finding a Motif in DNA
+# 3. Counting Point Mutations
+# 4. Finding a Protein Motif
+
 
 ########### Computing GC Content
-
 
 library(seqinr)
 library(LncFinder)
@@ -14,17 +19,6 @@ compute_GC(RosGCC, label = NULL, on.ORF = FALSE, ## LncFinder package
 ###########################################################################
 
 ############ Finding a Motif in DNA
-# The location of a substring s[j:k] is its beginning position j; 
-# note that t will have multiple locations in s if it occurs more than 
-# once as a substring of s (see the Sample below).
-# Given: Two DNA strings s and t (each of length at most 1 kbp).
-# Return: All locations of t as a substring of s.
-# 
-# Sample Dataset:
-# GATATATGCATATACTT
-# ATAT
-# Sample Output
-# 2 4 10
 
 RosMotif <- read.table("rosalind_subs.txt") ## Base R
       View(RosMotif)

@@ -2,7 +2,6 @@
 # 1. Computjing GC content
 # 2. Finding a Motif in DNA
 # 3. Counting Point Mutations
-# 4. Finding a Protein Motif
 
 
 ########### Computing GC Content
@@ -65,33 +64,4 @@ stringdist(str1, str2, method ="hamming")
       #       }
       # }
       # mutations
-
-#####################################################################
-
-## Finding a Protein Motif
-
-# 1) will recieve a file with uniProt IDs
-# 2) need to scrape protein sequence from ID
-# 3) then need to search for sequence N{P}[ST]{P} and sum
-# the occurrences in each protein sequence
-
-# 1_
-
-ProtMot <- read.table("rosalind_mprt.txt")
-View(ProtMot)
-
-
-source("https://bioconductor.org/biocLite.R")
-biocLite("Rcpi")
-
-id = c('P00750', 'P00751', 'P00752')
-
-
-
-getFASTAFromUniProt(id)
-
-
-
-
-
 

@@ -5,7 +5,7 @@ http://rosalind.info/problems/locations/
 ### Rosalind Bioinformatics Stronghold Problems:
 
 | Problem  | R Solution   | Python Solution |
-| :------------- | :----------: |
+| :------------- | :----------: | :----------: |
 |  Counting DNA Nucleotides | Rosalind1.R  | Rosalind1.py |
 | Transcribing RNA into DNA  | Rosalind1.R | Rosalind1.py |
 | Complementing a Strand of DNA | Rosalind1.R | Rosalind1.py |

@@ -3,10 +3,10 @@ My solutions to the problems at:
 http://rosalind.info/problems/locations/
 
 ### Rosalind Bioinformatics Stronghold Problems:
-Folders:
-Data = Source data for the problems
-Info = External data needed for some problems
-
+Folders:  
+Data = Source data for the problems  
+Info = External data needed for some problems  
+  
 | Problem  | R Solution   | Python Solution |
 | :------------- | :----------: | :----------: |
 |  Counting DNA Nucleotides | Rosalind1.R  | Rosalind1.py |
